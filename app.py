@@ -165,4 +165,4 @@ def search():
         return render_template('table.html', registros=registro_editado, qtd_registros=info)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
