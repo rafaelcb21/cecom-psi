@@ -163,3 +163,6 @@ def search():
         registro_editado = retirar_null(registros)
 
         return render_template('table.html', registros=registro_editado, qtd_registros=info)
+
+if __name__ == '__main__':
+    app.run(debug=True)
