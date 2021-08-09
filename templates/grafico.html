@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="{{ url_for('index') }}" class="brand-logo">CECOM</a>
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    
+    <div class="container">
+      <br><br>
+      <canvas id="myChart" width="300" height="300"></canvas>
+
+    </div>
+  </div>
+
+
+  <!--  Scripts-->
+  
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/init.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/chart.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/palette.js') }}"></script>
+
+  <script type="text/javascript">
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var label = {{label|safe}};
+    var data  = {{data|safe}};
+
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: label,
+            datasets: [{
+                label: 'Carteiras',
+                data: data,
+                backgroundColor: palette('tol', data.length).map(function(hex) {
+                  return '#' + hex;
+                })
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            },
+            indexAxis: 'y',
+            elements: {
+                bar: {
+                    borderWidth: 1,
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: '% de contas bloqueadas por carteira'
+                }
+            }
+        }
+    });
+    </script>
+  
+  </body>
+</html>

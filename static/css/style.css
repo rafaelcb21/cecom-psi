@@ -1,0 +1,65 @@
+.icon-block {
+    padding: 0 15px;
+}
+
+.icon-block .material-icons {
+    font-size: inherit;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .input-field > label {
+        font-size: 9px;
+    }
+}
+
+.visivel {
+    visibility: hidden;
+}
+
+.hr1 {
+    border: 0;
+    border-top: 1px dashed #CCC;
+}
+
+.my-table {
+    display: block;
+    overflow: auto;
+}
+
+canvas{
+    width:900px !important;
+    height:400px !important;
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1000px) {
+    /* For mobile phones: */
+    canvas{
+        width:750px !important;
+        height:400px !important;
+    }
+}
+
+@media only screen and (min-width: 701px) and (max-width: 900px) {
+    /* For mobile phones: */
+    canvas{
+        width:740px !important;
+        height:400px !important;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 700px) {
+    /* For mobile phones: */
+    canvas{
+        width:600px !important;
+        height:400px !important;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 600px) {
+    /* For mobile phones: */
+    canvas{
+        width:450px !important;
+        height:300px !important;
+    }
+}

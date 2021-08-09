@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">CECOM</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="{{ url_for('grafico') }}">Gráfico</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="{{ url_for('grafico') }}">Gráfico</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    
+    <div class="container">
+      <br><br>
+      <div class="col s12">
+        <div class="input-field col s3">
+        </div>
+        <div class="col s6">
+            <p>
+                <label>
+                  <input name="group1" id="to_cpfcnpj" value="cpfcnpj" type="radio" checked />
+                  <span>CPF/CNPJ</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input name="group1" id="to_conta" value="conta" type="radio" />
+                  <span>AGÊNCIA, OPERAÇÃO, CONTA e DV</span>
+                </label>
+            </p>
+        </div>
+        <div class="input-field col s3">
+        </div>
+      </div>
+      <div class="row center">
+        <div class="col s12" 
+            id="searchForm" search="/ajax/search/">
+            <div class="input-field col s3"></div>
+            <div class="input-field col s6">
+              <input id="inputNumber" type="text">
+              <label for="inputNumber" id="label_1">CPF/CNPJ</label>
+            </div>
+            <div class="input-field col s3" id="msg_validar"></div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col s12">
+            <div class="col s3"></div>
+            <div class="col s6">
+                <a id="procurar" class="waves-effect waves-light btn-small">
+                    <i class="material-icons left">search</i>
+                    Procurar
+                </a>
+            </div>
+            <div class="col s3"></div>
+        </div>
+      </div>
+        <div class="row">
+            <div id="id_table" class="visivel">
+                
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+  <!--  Scripts-->
+  
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/init.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+  <script>
+    window.onload = function() {
+        $("#to_cpfcnpj").on("click", toCPFCNPJ);
+        $("#to_conta").on("click", toConta);
+    };
+
+    var toCPFCNPJ = function() {
+        if ($("#to_cpfcnpj").val() == "cpfcnpj") {
+            $("#label_1").text("CPF/CNPJ");
+            $("#inputNumber").val('');
+            $(".visivel").css('visibility', 'hidden')
+        }
+    };
+
+    var toConta = function() {
+        if ($("#to_conta").val() == "conta") {
+            $("#label_1").text("AGÊNCIA, OPERAÇÃO, CONTA e DV");
+            $("#inputNumber").val('');
+            $("#msg_erro_cpfcnpj").remove();
+            $(".visivel").css('visibility', 'hidden')
+        }
+    };
+
+    var elem = document.querySelector('.collapsible.expandable');
+    var instance = M.Collapsible.init(elem, {
+        accordion: false
+    });
+  </script>
+
+  
+  </body>
+</html>

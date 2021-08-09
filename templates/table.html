@@ -1,0 +1,39 @@
+{{ qtd_registros }}
+{% if qtd_registros[0] != '0' %}
+    <table class="striped centered my-table">
+        <thead>
+        <tr>
+            <th>Agência</th>
+            <th>Operação</th>
+            <th>Conta</th>
+            <th>DV</th>
+            <th>CPF/CNPJ 01</th>
+            <th>CPF/CNPJ 02</th>
+            <th>CPF/CNPJ 03</th>
+            <th>CPF/CNPJ 04</th>
+            <th>Abertura</th>
+            <th>Último Cheque</th>
+            <th>Última Movimentação</th>
+            <th>TC</th>
+            <th>Última Movimentação Expontânea</th>
+            <th>Carteira</th>
+            <th>Nome 01</th>
+            <th>Nome 02</th>
+            <th>Nome 03</th>
+            <th>Nome 04</th>
+            <th>Conta Bloqueada</th>
+            <th>Conta CaCI</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for registro in registros %}
+                <tr>
+                    {% for item in registro[1:] %}
+                        <td>{{item}}</td>
+                    {% endfor %}
+                </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+
